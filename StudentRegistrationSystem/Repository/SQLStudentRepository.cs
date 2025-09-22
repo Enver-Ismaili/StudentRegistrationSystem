@@ -60,5 +60,30 @@ namespace StudentRegistrationSystem.Repository
             await dbContext.SaveChangesAsync();
             return existingStudent;
         }
+
+        public async Task<bool> AssignStudentToClassRoomAsync(int studentId, int classRoomId)
+        {
+            try
+            {
+                var student = await dbContext.Students.FindAsync(studentId);
+                if (student == null)
+                    throw new Exception("Student not found");
+                
+                var classRoom = await dbContext.ClassRooms.FindAsync(classRoomId);
+                if (classRoom == null)
+                    throw new Exception("ClassRoom not found");
+                
+                student.ClassRoomId = classRoomId;
+                
+                await dbContext.SaveChangesAsync();
+                
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
     }
 }

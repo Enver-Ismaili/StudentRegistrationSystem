@@ -88,5 +88,20 @@ namespace StudentRegistrationSystem.Controllers
 
             return Ok(mapper.Map<StudentDto>(studentDomainModel));
         }
-    } 
+
+        [HttpPost("{studentId}/assign/{classRoomId}")]
+        public async Task<IActionResult> AssignStudentToClassRoom(int studentId, int classRoomId)
+        {
+            try
+            {
+                var updatedStudent = await studentRepository.AssignStudentToClassRoomAsync(studentId, classRoomId);
+                return Ok(updatedStudent);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+    }
 }

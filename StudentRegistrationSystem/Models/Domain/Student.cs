@@ -7,5 +7,8 @@
         public string LastName { get; set; }
 
         public decimal AverageGrade { get; set; }
+
+        public int? ClassRoomId { get; set; }
+        public ClassRoom? ClassRoom { get; set; }
     }
 }

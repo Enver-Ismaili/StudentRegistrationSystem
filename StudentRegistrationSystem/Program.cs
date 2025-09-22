@@ -16,8 +16,10 @@ builder.Services.AddDbContext<StudentDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("StudentDbContextConnectionString")));
 
 builder.Services.AddScoped<IStudentRepository, SQLStudentRepository>();
+builder.Services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
 
 builder.Services.AddAutoMapper(typeof(StudentMapper));
+builder.Services.AddAutoMapper(typeof(ClasRoomMapper));
 
 var app = builder.Build();
 

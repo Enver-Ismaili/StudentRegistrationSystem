@@ -9,5 +9,6 @@ namespace StudentRegistrationSystem.Repository
         Task<Student> CreateStudentAsync(Student student);
         Task<Student> UpdateStudentAsync(int id, Student student);
         Task<Student> DeleteStudentAsync(int id);
+        Task<bool> AssignStudentToClassRoomAsync(int studentId, int classRoomId);
     }
 }
